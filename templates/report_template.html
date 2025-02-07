@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ company }} - Forensic Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #2c3e50; }
+        .section { margin-bottom: 30px; }
+        .ioc-section { background-color: #f8f9fa; padding: 15px; }
+        .timeline-event { border-left: 3px solid #3498db; padding-left: 10px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>{{ company }} Forensic Report</h1>
+    <h2>Case ID: {{ case_id }}</h2>
+    
+    <div class="section">
+        <h2>Indicators of Compromise</h2>
+        {% for type, values in iocs.items() %}
+        <div class="ioc-section">
+            <h3>{{ type|upper }} ({{ values|length }})</h3>
+            <ul>
+                {% for value in values %}
+                <li>{{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>Event Timeline</h2>
+        {% for event in timeline %}
+        <div class="timeline-event">
+            <strong>{{ event.timestamp }}</strong> [{{ event.source }}]<br>
+            {{ event.description }}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

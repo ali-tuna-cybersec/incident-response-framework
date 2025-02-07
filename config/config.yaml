@@ -1,0 +1,20 @@
+collection:
+  windows:
+    max_processes: 1000  # Maximum number of processes to collect
+    max_logs: 500        # Maximum number of logs to collect
+  linux:
+    max_processes: 1000  # Maximum number of processes to collect
+    max_logs: 500        # Maximum number of logs to collect
+
+analysis:
+  ioc_types:
+    - ip       # Indicator of Compromise: IP addresses
+    - domain   # Indicator of Compromise: Domains
+    - hash     # Indicator of Compromise: Hashes
+    - email    # Indicator of Compromise: Email addresses
+  timeline_max_events: 1000  # Maximum number of events in the timeline
+
+reporting:
+  company_name: "Security Operations Center"  # Name of the organization
+  report_path: "reports"  # Path to save generated reports
+  template_path: "templates"  # Path to report templates
